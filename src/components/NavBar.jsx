@@ -2,7 +2,7 @@ import logo from '../assets/gkk.png';
 
 export default function NavBar() {
     return (
-        <nav className="bg-transparent py-8 fixed w-full">
+        <nav className="bg-slate-600 py-8 fixed w-full">
             <div className="mx-auto flex justify-between items-center">
                 <div className='flex gap-4 ml-24'>
                     <img src={logo} alt="logo" className="w-16 h-16 my-auto" />

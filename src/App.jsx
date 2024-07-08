@@ -1,6 +1,7 @@
 import NavBar from './components/NavBar'
 import AboutDuwet from './pages/AboutDuwet'
 import HeroPage from './pages/HeroPage'
+import Sambutan from './pages/Sambutan'
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
         <HeroPage />
       </div>
       <AboutDuwet />
+      <Sambutan />
     </div>
   )
 }
