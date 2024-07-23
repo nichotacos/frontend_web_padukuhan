@@ -15,7 +15,7 @@ export default function Homepage() {
                 backgroundSize: "cover",
                 height: "100vh",
             }}>
-                <div className='h-full flex flex-col justify-center ml-48'>
+                <div className='h-full flex flex-col justify-center ml-12 md:ml-32 lg:ml-48'>
                     <HeroPage />
                 </div>
                 <AboutDuwet />
