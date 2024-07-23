@@ -1,28 +1,31 @@
-import logo from '../assets/gkk.png';
+import { Link } from 'react-router-dom';
+import logo from '/img/logo_kim_duwet.png';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 
 export default function NavBar() {
     return (
-        <nav className="bg-slate-600 py-8 fixed w-full">
-            <div className="mx-auto flex justify-between items-center">
-                <div className='flex gap-4 ml-24'>
-                    <img src={logo} alt="logo" className="w-16 h-16 my-auto" />
-                    <h1 className="text-white font-medium text-5xl my-auto font-bebas-neue tracking-normal">PADUKUHAN DUWET</h1>
-                </div>
-                <ul className="flex space-x-6 mr-24">
-                    <li className='transition ease-in-out p-2 rounded hover:bg-duwet-primary hover:scale-110 duration-300'>
-                        <a href="#" className="text-white text-lg font-inter">Beranda</a>
-                    </li>
-                    <li className='transition ease-in-out p-2 rounded hover:bg-duwet-primary hover:scale-110 duration-300'>
-                        <a href="#" className="text-white text-lg font-inter">About</a>
-                    </li>
-                    <li className='transition ease-in-out p-2 rounded hover:bg-duwet-primary hover:scale-110 duration-300'>
-                        <a href="#" className="text-white text-lg font-inter">Contact</a>
-                    </li>
-                    <li className='transition ease-in-out p-2 rounded hover:bg-duwet-primary hover:scale-110 duration-300'>
-                        <a href="#" className="text-white text-lg font-inter">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <Navbar shouldHideOnScroll isBlurred={false} className='bg-duwet-main-bg' >
+            <NavbarBrand className='flex flex-row align-middle'>
+                <img src={logo} alt="Logo" className="w-20 h-w-20 mr-4" />
+                <p className="font-bold font-bebas-neue text-3xl text-inherit">PADUKUHUAN DUWET</p>
+            </NavbarBrand>
+            <NavbarContent className="hidden sm:flex gap-4" justify="end">
+                <NavbarItem isActive>
+                    <Link to='/' >
+                        Beranda
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
+                    <Link color='foreground' href="#" aria-current="page">
+                        Profil
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
+                    <Link color="foreground" href="#">
+                        Apalah
+                    </Link>
+                </NavbarItem>
+            </NavbarContent>
+        </Navbar>
     );
 }
