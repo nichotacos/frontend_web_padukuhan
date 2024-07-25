@@ -2,8 +2,9 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button
 import AddContentModal from "./components/AddContentModal";
 import { useEffect, useState } from "react";
 import { FetchKonten } from "../../api/ApiContent";
+import Loader from "../../components/Loading";
 
-export default function AdminContents() {
+export default function AdminContents({ isSideBarOpen }) {
     const [contents, setContents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -29,13 +30,15 @@ export default function AdminContents() {
 
     const token = localStorage.getItem("token");
 
+    const checker = isSideBarOpen ? "ml-80 mt-20" : "ml-30 mt-20";
+
     return (
         <>
-            {loading ? <p>Loading...</p> : (
+            {loading ? <Loader /> : (
                 <>
                     <AddContentModal isOpen={isOpen} onOpenChange={onOpenChange} />
-                    <div className="ml-80 mt-20">
-                        <h1 className="text-4xl font-bold">Admin Contents</h1>
+                    <div className="ml-28 lg:ml-80 mt-20">
+                        <h1 className="text-base lg:text-4xl font-bold">Admin Contents</h1>
                         <p>{token}</p>
                         <Button className="mt-8 mb-4 font-bold text-lg" color="warning" onPress={onOpen}>
                             Add Content

@@ -61,22 +61,12 @@ export default function AdminSidebar() {
                         {collapsed ? (
                             <>
                                 <MenuItem
-                                    icon={<FaDesktop />}
-                                >
-
-                                </MenuItem>
-                                <MenuItem
                                     icon={<FaRegNewspaper />}
                                 />
                             </>
 
                         ) : (
                             <>
-                                <Link to="/admin">
-                                    <MenuItem>
-                                        Dashboard
-                                    </MenuItem>
-                                </Link>
                                 <Link to="/admin/konten">
                                     <MenuItem>
                                         Konten

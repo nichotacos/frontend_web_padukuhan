@@ -14,7 +14,7 @@
     position: absolute;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
     .map-responsive {
         padding-bottom: 26.25%;
     }

@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { FetchKontenDetail } from "../api/ApiContent";
 import { Image } from "@nextui-org/react";
 import moment from "moment";
+import Footer from "../components/Footer";
+import Loader from "../components/Loading";
 
 
 export default function ContentDetail() {
@@ -26,7 +28,7 @@ export default function ContentDetail() {
     }, [id]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
 
     if (!content) {
@@ -36,17 +38,20 @@ export default function ContentDetail() {
     console.log(content);
 
     return (
-        <div className="bg-lime-100 flex flex-col items-center pt-8 h-screen">
-            <h1 className="font-poppins text-3xl font-semibold">{content.title}</h1>
-            <p className="font-inter text-xs mb-8 text-pretty">{moment(content.created_at).format('LL')}</p>
-            <div className="w-3/4 flex flex-col lg:flex-row">
-                <div>
-                    <Image src={content.image} alt={content.title} className="w-96 h-w-96" />
-                </div>
-                <div className="content-start ml-0 mt-2 lg:ml-8">
-                    <p className="font-inter text-base text-pretty">{content.content}</p>
+        <>
+            <div className="bg-lime-100 flex flex-col items-center pt-8 h-screen">
+                <h1 className="font-poppins text-3xl font-semibold mb-2">{content.title}</h1>
+                <p className="font-inter text-xs mb-8 text-pretty">{moment(content.created_at).format('LL')}</p>
+                <div className="w-3/4 flex flex-col lg:flex-row">
+                    <div className="basis-2/5">
+                        <Image src={content.image} alt={content.title} className="w-96 h-w-96" />
+                    </div>
+                    <div className="content-start ml-0 mt-2 lg:ml-8 basis-3/5">
+                        <p className="font-inter text-base text-pretty text-justify">{content.content}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 }
