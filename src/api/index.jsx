@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "http://127.0.0.1:8000";
+export const BASE_URL = "https://backend-web-padukuhan.vercel.app";
 
 export const getGambarKonten = (gambar_konten) => {
     return `${BASE_URL}/storage/img/${gambar_konten}`;
