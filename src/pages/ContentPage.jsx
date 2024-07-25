@@ -35,7 +35,7 @@ export default function ContentPage() {
                         {contents.map((content) => (
                             <Card key={content.id} shadow className="w-64 lg:w-72">
                                 <CardHeader>
-                                    <Image src={getGambarKonten(content.image)} alt={content.title} className="aspect-square" />
+                                    <Image src={content.image} alt={content.title} className="aspect-square" />
                                 </CardHeader>
                                 <CardBody>
                                     <p className="font-poppins font-bold text-lg">{content.title}</p>

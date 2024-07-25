@@ -42,7 +42,7 @@ export default function ContentDetail() {
             <p className="font-inter text-xs mb-8 text-pretty">{moment(content.created_at).format('LL')}</p>
             <div className="w-3/4 flex flex-col lg:flex-row">
                 <div>
-                    <Image src={getGambarKonten(content.image)} alt={content.title} className="w-96 h-w-96" />
+                    <Image src={content.image} alt={content.title} className="w-96 h-w-96" />
                 </div>
                 <div className="content-start ml-0 mt-2 lg:ml-8">
                     <p className="font-inter text-base text-pretty">{content.content}</p>

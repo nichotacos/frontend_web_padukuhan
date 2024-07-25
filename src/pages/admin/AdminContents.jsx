@@ -2,7 +2,6 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button
 import AddContentModal from "./components/AddContentModal";
 import { useEffect, useState } from "react";
 import { FetchKonten } from "../../api/ApiContent";
-import { getGambarKonten } from "../../api";
 
 export default function AdminContents() {
     const [contents, setContents] = useState([]);
@@ -55,7 +54,7 @@ export default function AdminContents() {
                                         <TableCell className="text-lg text-pretty">{content.title}</TableCell>
                                         <TableCell className="text-lg text-pretty">{content.content}</TableCell>
                                         <TableCell>
-                                            <Image src={getGambarKonten(content.image)} width={250} height={250} />
+                                            <Image src={content.image} width={250} height={250} />
                                         </TableCell>
                                     </TableRow>
                                 ))}
