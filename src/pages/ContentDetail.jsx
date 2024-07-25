@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { FetchKontenDetail } from "../api/ApiContent";
-import { getGambarKonten } from "../api";
 import { Image } from "@nextui-org/react";
 import moment from "moment";
 

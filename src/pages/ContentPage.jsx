@@ -1,7 +1,6 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { FetchKontenLimited } from "../api/ApiContent";
-import { getGambarKonten } from "../api";
 import { useNavigate } from "react-router-dom";
 
 export default function ContentPage() {

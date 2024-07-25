@@ -28,6 +28,7 @@ export default function App() {
       {/* <ReactLenis root> */}
       <NavBar />
       <Outlet />
+      <Footer />
       {/* </ReactLenis> */}
     </>
   );
