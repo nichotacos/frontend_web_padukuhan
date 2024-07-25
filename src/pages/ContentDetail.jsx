@@ -39,10 +39,10 @@ export default function ContentDetail() {
 
     return (
         <>
-            <div className="bg-lime-100 flex flex-col items-center pt-8 h-screen">
-                <h1 className="font-poppins text-3xl font-semibold mb-2">{content.title}</h1>
+            <div className="bg-lime-100 flex flex-col items-center pt-8 pb-20">
+                <h1 className="font-poppins text-3xl font-semibold text-center mb-2">{content.title}</h1>
                 <p className="font-inter text-xs mb-8 text-pretty">{moment(content.created_at).format('LL')}</p>
-                <div className="w-3/4 flex flex-col lg:flex-row">
+                <div className="w-3/4 flex flex-col items-center lg:flex-row">
                     <div className="basis-2/5">
                         <Image src={content.image} alt={content.title} className="w-96 h-w-96" />
                     </div>
