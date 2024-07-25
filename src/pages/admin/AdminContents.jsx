@@ -28,6 +28,8 @@ export default function AdminContents() {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
+    const token = localStorage.getItem("token");
+
     return (
         <>
             {loading ? <p>Loading...</p> : (
@@ -35,6 +37,7 @@ export default function AdminContents() {
                     <AddContentModal isOpen={isOpen} onOpenChange={onOpenChange} />
                     <div className="ml-80 mt-20">
                         <h1 className="text-4xl font-bold">Admin Contents</h1>
+                        <p>{token}</p>
                         <Button className="mt-8 mb-4 font-bold text-lg" color="warning" onPress={onOpen}>
                             Add Content
                         </Button>

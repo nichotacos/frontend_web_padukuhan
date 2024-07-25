@@ -18,24 +18,33 @@ export default function AdminLoginPage() {
         }
 
         const formData = new FormData();
-
         formData.append("email", email);
         formData.append("password", password);
 
-        const response = await LoginAuth(formData);
+        try {
+            const response = await LoginAuth(formData);
+            console.log(response);
 
-        console.log(response);
+            if (response.message === 'Wrong credentials') {
+                toast.error("Email atau password salah");
+                return;
+            } else if (response.message) {
+                toast.success(response.message);
+            }
 
-        if (response.message === 'Wrong credentials') {
-            toast.error("Email atau password salah");
-            return;
+            if (response.token && response.token.plainTextToken && response.data) {
+                localStorage.setItem("token", response.token.plainTextToken);
+                localStorage.setItem("user", JSON.stringify(response.data));
+                navigate("/admin");
+            } else {
+                toast.error("Unexpected response structure");
+                console.error("Unexpected response structure:", response);
+            }
+        } catch (error) {
+            toast.error("Terjadi kesalahan saat login");
+            console.error("Login error:", error);
         }
-
-        localStorage.setItem("token", response.token.accessToken);
-        localStorage.setItem("user", response.data);
-
-        navigate("/admin");
-    }
+    };
 
     return (
         <div className="flex flex-row" style={{
