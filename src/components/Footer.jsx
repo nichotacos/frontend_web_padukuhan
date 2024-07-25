@@ -9,7 +9,7 @@ const Footer = () => {
                     <p className='text-xs font-inter'>Kalurahan Jerukwudel, Kabupaten Gunungkidul, Daerah Istimewa Yogyakarta</p>
                 </div>
                 <div className='my-auto text-center pt-4 lg:py-0'>
-                    <a href="https://www.instagram.com/kim_juruwartaduwet/"><FaInstagram className='text-2xl' /></a>
+                    <a href="https://www.instagram.com/kim_juruwartaduwet/" target="_blank" rel="noopener noreferrer"><FaInstagram className='text-2xl' /></a>
                 </div>
             </div>
         </footer>
