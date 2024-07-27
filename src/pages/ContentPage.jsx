@@ -1,13 +1,18 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Image, Spinner } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FetchKontenLimited } from "../api/ApiContent";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContentPage() {
     const [contents, setContents] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const cardsRef = useRef([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +28,26 @@ export default function ContentPage() {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (!loading) {
+            gsap.fromTo(cardsRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: cardsRef.current,
+                        start: "top 80%",
+                        end: "top 30%",
+                        scrub: 1,
+                    },
+                }
+            );
+        }
+    }, [loading]);
 
     if (loading) {
         return <Spinner size="lg" color="warning" className="my-2 lg:my-8 flex flex-col justify-center">Loading...</Spinner>
@@ -47,14 +72,14 @@ export default function ContentPage() {
                         </div>
                     ) : (
                         <div className="flex flex-col lg:flex-row gap-8">
-                            {contents.map((content) => (
-                                <Card key={content.id} shadow="lg" className="w-64 lg:w-72">
+                            {contents.map((content, index) => (
+                                <Card key={content.id} ref={el => cardsRef.current[index] = el} shadow="lg" className="w-64 lg:w-72">
                                     <CardHeader>
                                         <Image src={content.image} alt={content.title} className="aspect-square" />
                                     </CardHeader>
                                     <CardBody>
                                         <p className="font-poppins font-bold text-lg">{content.title}</p>
-                                        <p className="truncate">{content.content}</p>
+                                        <p className="line-clamp-3 text-sm mt-2">{content.content}</p>
                                     </CardBody>
                                     <CardFooter className="flex flex-row justify-between">
                                         <Button auto className="font-semibold bg-amber-500 text-white" onClick={() => handleReadMore(content.id)}>Baca Berita</Button>
