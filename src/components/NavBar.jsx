@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '/img/logo_kim_duwet.png';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
 import { useState } from 'react';
@@ -12,7 +12,6 @@ export default function NavBar() {
         { name: "Beranda", path: "/" },
         { name: "Profil", path: "/profil" },
         { name: "Konten", path: "/konten" },
-        { name: "Galeri", path: "/galeri" },
     ];
 
     const handleClick = () => {
