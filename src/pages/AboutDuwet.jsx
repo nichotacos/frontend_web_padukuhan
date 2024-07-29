@@ -42,7 +42,7 @@ export default function AboutDuwet() {
     }, []);
 
     return (
-        <div className="bg-duwet-main-bg">
+        <div className="bg-[url('/img/embung-ngrancah.jpeg')] bg-cover md:bg-none md:bg-duwet-main-bg lg:bg-duwet-main-bg">
             <div className="h-screen lg:h-screen flex flex-row items-center justify-center lg:justify-start">
                 <div className="w-0 h-0 lg:h-4/6 lg:w-7/12 overflow-hidden invisible lg:visible">
                     <img ref={imgRef} src={embung} alt="duwet" className="scale-150 rounded-xl" />
