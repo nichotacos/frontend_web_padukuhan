@@ -2,7 +2,7 @@ import { FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="text-white py-8 lg:py-12 bg-duwet-primary flex flex-row justify-center">
+        <footer className="text-white py-6 lg:py-8 bg-duwet-primary flex flex-row justify-center">
             <div className='w-3/4 flex flex-col lg:flex-row text-center lg:text-start items-center lg:justify-between'>
                 <div className='flex flex-col gap-1'>
                     <p className='font-inter text-lg font-semibold'>Padukuhan Duwet</p>

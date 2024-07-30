@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import NavBar from './components/NavBar';
 import { Outlet } from 'react-router';
 import gsap from 'gsap';
-import Footer from './components/Footer';
 
 // Ensure correct import
 // import { ReactLenis, useLenis } from '@studio-freight/react-lenis';

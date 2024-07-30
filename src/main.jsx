@@ -13,6 +13,7 @@ import { Toaster } from 'sonner';
 import ContentDetail from './pages/ContentDetail.jsx';
 import Homepage from './pages/Homepage.jsx';
 import AllContents from './pages/AllContents.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
 // import { useLenis } from '@studio-freight/react-lenis/types';
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: '/konten/:id',
         element: <ContentDetail />
       },
+      {
+        path: '/profil',
+        element: <ProfilePage />
+      }
     ]
   },
   {

@@ -6,6 +6,7 @@ import Location from './Location';
 import Footer from '../components/Footer';
 import VisitedPlaces from './VisitedPlaces';
 import OrganisationStructure from './OrganisationStructure';
+import VideoProfile from './VideoProfile';
 
 export default function Homepage() {
     return (
@@ -24,6 +25,7 @@ export default function Homepage() {
                 <VisitedPlaces />
                 <Location />
                 <OrganisationStructure />
+                <VideoProfile />
                 <Footer />
             </div>
         </>
