@@ -52,13 +52,13 @@ export default function AdminLoginPage() {
             backgroundSize: "cover",
             height: "100vh",
         }}>
-            <div className="basis-2/3 h-screen">
+            <div className="w-0 md:basis-1/2 lg:basis-2/3 h-screen invisible md:visible">
                 <div className="h-full flex flex-col justify-center items-center">
-                    <p className="font-roboto text-5xl text-white font-bold">Selamat Datang di Halaman Admin</p>
+                    <p className="font-roboto md:text-3xl lg:text-5xl text-white font-bold">Selamat Datang di Halaman Admin</p>
                 </div>
             </div>
-            <div className="bg-duwet-main-bg basis-1/3 h-screen flex flex-col justify-center items-center">
-                <div className="border-2 border-black rounded-large p-8 w-3/5 flex flex-col">
+            <div className="bg-[url('/img/gk_landscape.jpg')] bg-cover md:bg-none md:bg-duwet-main-bg lg:bg-duwet-main-bg basis-full md:basis-1/2 lg:basis-1/3 h-screen flex flex-col justify-center items-center">
+                <div className="border-2 border-white md:border-black rounded-large p-8 w-3/5 flex flex-col">
                     <p className="font-roboto font-bold text-center text-3xl pb-8 pt-4">Login</p>
                     <form onSubmit={handleLogin}>
                         <Input

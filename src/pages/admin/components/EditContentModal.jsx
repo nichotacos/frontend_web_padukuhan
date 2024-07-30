@@ -13,7 +13,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
         if (content) {
             setTitle(content.title || "");
             setDescription(content.content || "");
-            setImage(content.image || null);
+            // setImage(content.image || null);
         }
     }, [content]);
 
@@ -37,7 +37,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
         const newData = {
             title: title,
             description: description,
-            // image: image
+            image: image
         }
 
         // eslint-disable-next-line no-unused-vars
@@ -93,7 +93,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
                                     <>
                                         <p className='text-sm mt-2'>Gambar Konten:</p>
                                         <Image
-                                            src={image}
+                                            src={URL.createObjectURL(image)}
                                             alt="content-image"
                                             width={150}
                                             height={150}

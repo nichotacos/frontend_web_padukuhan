@@ -14,7 +14,10 @@ import ContentDetail from './pages/ContentDetail.jsx';
 import Homepage from './pages/Homepage.jsx';
 import AllContents from './pages/AllContents.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import ProtectedRoute from './pages/admin/ProtectedRoute.jsx';
 // import { useLenis } from '@studio-freight/react-lenis/types';
+
+const user = JSON.parse(localStorage.getItem("user"));
 
 const router = createBrowserRouter([
   {
@@ -45,7 +48,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AdminContents />,
+        element: <ProtectedRoute user={user}><AdminContents /></ProtectedRoute>
       }
     ]
   },

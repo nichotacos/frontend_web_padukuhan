@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import VisitedPlaces from './VisitedPlaces';
 import OrganisationStructure from './OrganisationStructure';
 import VideoProfile from './VideoProfile';
+import QRCode from './QRCode';
 
 export default function Homepage() {
     return (
@@ -26,6 +27,7 @@ export default function Homepage() {
                 <Location />
                 <OrganisationStructure />
                 <VideoProfile />
+                <QRCode />
                 <Footer />
             </div>
         </>

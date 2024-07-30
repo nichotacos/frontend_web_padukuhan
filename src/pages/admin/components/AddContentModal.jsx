@@ -10,6 +10,8 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+
     function handleContentImage(event) {
         setImage(event.target.files[0]);
     }
@@ -31,7 +33,15 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
         formData.append("image", image);
 
         // eslint-disable-next-line no-unused-vars
-        const response = await CreateKonten(formData);
+        try {
+            setLoading(true);
+            const response = await CreateKonten(formData);
+            console.log(response);
+        } catch (error) {
+            console.error('Error creating content:', error);
+        } finally {
+            setLoading(false);
+        }
 
         setTitle("");
         setDescription("");
@@ -95,7 +105,7 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
                                 Batal
                             </Button>
                             <Button color="primary" type="submit">
-                                Tambah
+                                {loading ? "Loading..." : "Tambah"}
                             </Button>
                         </ModalFooter>
                     </form>

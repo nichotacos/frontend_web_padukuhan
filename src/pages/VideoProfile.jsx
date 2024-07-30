@@ -33,7 +33,7 @@ export default function VideoProfile() {
                 <h1 className="font-poppins text-3xl lg:text-4xl font-bold text-center text-white">Video Profil Padukuhan</h1>
             </div>
             <div className="map-responsive w-3/4 pb-26-25">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/wIdwS3n3460?si=KNBBzbvDxeDY5Pdy" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wIdwS3n3460?si=KNBBzbvDxeDY5Pdy" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen="true"></iframe>
             </div>
         </div>
     );
