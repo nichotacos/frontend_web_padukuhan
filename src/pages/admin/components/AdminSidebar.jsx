@@ -1,83 +1,65 @@
-import { useState } from "react";
-import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
-
-import { FaBars } from "react-icons/fa";
-import { FaDesktop } from "react-icons/fa";
-import { FaRegNewspaper } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import logo from '/img/logo_kim_duwet.png';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
+import { useState } from 'react';
 
 export default function AdminSidebar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const [collapsed, setCollapsed] = useState(false);
+    const menuItems = [
+        { name: "Beranda", path: "/" },
+        { name: "Profil", path: "/profil" },
+        { name: "Konten", path: "/konten" },
+    ];
 
-    const [toggled, setToggled] = useState(false);
-
-    const handleCollapsedChange = () => {
-        setCollapsed(!collapsed);
-    };
-    const handleToggleSidebar = (value) => {
-        setToggled(value);
-    };
+    const handleClick = () => {
+        navigate('/');
+    }
 
     return (
-        <>
-            <Sidebar
-                className={`app ${toggled ? "toggled" : ""}`}
-                style={{ height: "100%", position: "absolute" }}
-                collapsed={collapsed}
-                toggled={toggled}
-                handleToggleSidebar={handleToggleSidebar}
-                handleCollapsedChange={handleCollapsedChange}
-            >
-                <main>
-                    <Menu className="bg-duwet-secondary">
-                        {collapsed ? (
-                            <MenuItem
-                                icon={<FaBars />}
-                                onClick={handleCollapsedChange}
-                            ></MenuItem>
-                        ) : (
-                            <MenuItem
-                                // suffix={<FiChevronsLeft />}
-                                onClick={handleCollapsedChange}
-                            >
-                                <div
-                                    style={{
-                                        padding: "9px",
-                                        // textTransform: "uppercase",
-                                        fontWeight: "bold",
-                                        fontSize: 18,
-                                        letterSpacing: "1px"
-                                    }}
-                                >
-                                    Admin Duwet
-                                </div>
-                            </MenuItem>
-                        )}
-                        <hr />
-                    </Menu>
+        <Navbar shouldHideOnScroll isBlurred={false} className='bg-duwet-main-bg' onMenuOpenChange={setIsMenuOpen}>
+            <NavbarContent>
+                <NavbarMenuToggle
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    className='sm:hidden'
+                />
 
-                    <Menu className="bg-duwet-main-bg">
-                        {collapsed ? (
-                            <>
-                                <MenuItem
-                                    icon={<FaRegNewspaper />}
-                                />
-                            </>
+                <NavbarBrand className='flex flex-row align-middle' onClick={handleClick}>
+                    <img src={logo} alt="Logo" className="w-20 h-w-20 mr-4" />
+                    <p className="font-bold font-bebas-neue text-3xl text-inherit">PADUKUHAN DUWET</p>
+                </NavbarBrand>
+            </NavbarContent>
 
-                        ) : (
-                            <>
-                                <Link to="/admin/konten">
-                                    <MenuItem>
-                                        Konten
-                                    </MenuItem>
-                                </Link>
-                            </>
-                        )}
-                    </Menu>
+            <NavbarContent className="hidden sm:flex gap-4" justify="end">
+                {menuItems.map((item) => (
+                    <NavbarItem key={item.name} isActive={location.pathname === item.path}
+                        className='hover:bg-duwet-primary hover:text-white hover:scale-110 duration-300 p-1 rounded-md'
+                    >
+                        <Link to={item.path}>
+                            {item.name}
+                        </Link>
+                    </NavbarItem>
+                ))}
+            </NavbarContent>
 
-                </main>
-            </Sidebar>
-        </>
-    )
+            <NavbarMenu>
+                {menuItems.map((item, index) => (
+                    <NavbarMenuItem key={`${item.name}-${index}`} isActive={location.pathname === item.path}>
+                        <Link
+                            color={
+                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                            }
+                            className="w-full"
+                            to={item.path}
+                            size="lg"
+                        >
+                            {item.name}
+                        </Link>
+                    </NavbarMenuItem>
+                ))}
+            </NavbarMenu>
+        </Navbar >
+    );
 }

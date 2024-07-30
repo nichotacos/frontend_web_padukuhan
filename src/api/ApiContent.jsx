@@ -61,3 +61,31 @@ export const CreateKonten = async (data) => {
         console.error(error);
     }
 }
+
+export const EditKonten = async (data) => {
+    try {
+        console.log('data di api:', data);
+        const response = await useAxios.put(`/konten/${data.id}`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const DeleteKonten = async (id) => {
+    try {
+        const response = await useAxios.delete(`/konten/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}

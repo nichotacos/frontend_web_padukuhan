@@ -1,13 +1,10 @@
 import { useEffect, useRef } from "react";
-import { Image } from "@nextui-org/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import './LocationStyle.css';
 
-import SO_KarangTaruna from "/img/SO_KarangTaruna.png";
-import SO_PokTan from "/img/SO_PokTan.png";
-import SO_Padukuhan from "/img/SO_Padukuhan.png";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoProfile() {
     const containerRef = useRef(null);
@@ -35,8 +32,8 @@ export default function VideoProfile() {
             <div ref={containerRef} className="bg-duwet-primary flex flex-col justify-center py-4 w-3/4 rounded-2xl mb-4 lg:mb-8">
                 <h1 className="font-poppins text-3xl lg:text-4xl font-bold text-center text-white">Video Profil Padukuhan</h1>
             </div>
-            <div ref={containerRef} className="flex flex-col md:flex-row lg:flex-row gap-8 items-center">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/1kSjELHC6F4?si=zFV-mPKErCuoF6IG" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <div className="map-responsive w-3/4 pb-26-25">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wIdwS3n3460?si=KNBBzbvDxeDY5Pdy" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     );

@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
             height: "100vh",
         }}>
             <div className="basis-2/3 h-screen">
-                <div className="h-full flex flex-col justify-center ml-48">
+                <div className="h-full flex flex-col justify-center items-center">
                     <p className="font-roboto text-5xl text-white font-bold">Selamat Datang di Halaman Admin</p>
                 </div>
             </div>

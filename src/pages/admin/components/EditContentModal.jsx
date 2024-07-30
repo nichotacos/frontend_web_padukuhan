@@ -1,14 +1,21 @@
 /* eslint-disable react/prop-types */
 import { Button, Image, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { CreateKonten } from "../../../api/ApiContent";
+import { EditKonten } from "../../../api/ApiContent";
 
-
-export default function AddContentModal({ isOpen, onOpenChange }) {
+export default function EditContentModal({ content, isOpen, onOpenChange }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        if (content) {
+            setTitle(content.title || "");
+            setDescription(content.content || "");
+            setImage(content.image || null);
+        }
+    }, [content]);
 
     function handleContentImage(event) {
         setImage(event.target.files[0]);
@@ -17,27 +24,30 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        console.log(title, description, image)
-
-        if (title === "" || description === "" || image === "") {
+        if (title === "" || description === "" || !image) {
             toast.error("Semua kolom harus diisi");
             return;
         }
 
         const formData = new FormData();
-
         formData.append("title", title);
-        formData.append("content", description);
+        formData.append("description", description);
         formData.append("image", image);
 
+        const newData = {
+            title: title,
+            description: description,
+            // image: image
+        }
+
         // eslint-disable-next-line no-unused-vars
-        const response = await CreateKonten(formData);
+        const response = await EditKonten(newData);
 
         setTitle("");
         setDescription("");
         setImage(null);
 
-        onOpenChange(true);
+        onOpenChange(false);
 
         toast.success("Konten berhasil ditambahkan");
     }
@@ -47,20 +57,22 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
             <ModalContent>
                 {(onClose) => (
                     <form onSubmit={handleSubmit}>
-                        <ModalHeader className="flex flex-col gap-1 text-2xl">Tambah Konten</ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1 text-2xl">Edit Konten</ModalHeader>
                         <ModalBody>
                             <div className="flex flex-col gap-4">
                                 <Input
                                     label="Judul"
                                     placeholder="Masukkan judul konten"
-                                    onChange={(e) => (setTitle(e.target.value))}
+                                    onChange={(e) => setTitle(e.target.value)}
                                     name="title"
+                                    value={title}
                                 />
                                 <Input
                                     label="Deskripsi"
                                     placeholder="Masukkan deskripsi konten"
-                                    onChange={(e) => (setDescription(e.target.value))}
+                                    onChange={(e) => setDescription(e.target.value)}
                                     name="description"
+                                    value={description}
                                 />
                                 <Button
                                     type="button"
@@ -77,11 +89,21 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
                                     accept="image/*"
                                     className="hidden"
                                 ></input>
-                                {image && (
+                                {image ? (
                                     <>
                                         <p className='text-sm mt-2'>Gambar Konten:</p>
                                         <Image
-                                            src={URL.createObjectURL(image)}
+                                            src={image}
+                                            alt="content-image"
+                                            width={150}
+                                            height={150}
+                                        />
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className='text-sm mt-2'>Gambar Konten:</p>
+                                        <Image
+                                            src={content.image ?? ""}
                                             alt="content-image"
                                             width={150}
                                             height={150}
@@ -95,13 +117,12 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
                                 Batal
                             </Button>
                             <Button color="primary" type="submit">
-                                Tambah
+                                Simpan
                             </Button>
                         </ModalFooter>
                     </form>
                 )}
             </ModalContent>
-
         </Modal>
     )
 }

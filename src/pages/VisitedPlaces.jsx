@@ -56,7 +56,7 @@ export default function VisitedPlaces() {
                 <div className="font-poppins text-3xl lg:text-4xl font-bold mb-2 mt-8 lg:mb-8 bg-duwet-primary w-full lg:w-1/2 text-center text-white py-2 lg:py-4 rounded-2xl">Titik Lokasi</div>
                 <div className="flex flex-col gap-4 md:flex-row lg:flex-row lg:gap-0 mb-8 justify-around items-center w-full">
                     <div className="flex flex-col items-center text-center" ref={addToRefs}>
-                        <Image src="/img/pak-dukuh.jpeg" alt="Balai Dusun Duwet" className="rounded-xl w-48 h-72 md:w-48 md:h-72 lg:w-64 lg:h-96" isZoomed />
+                        <Image src="/img/embung-ngrancah.jpeg" alt="Balai Dusun Duwet" className="rounded-xl w-48 h-72 md:w-48 md:h-72 lg:w-64 lg:h-96" isZoomed />
                         <p className="font-inter text-lg mt-4 font-semibold bg-duwet-primary w-3/4 rounded-md py-2 text-white">Balai Dusun Duwet</p>
                     </div>
                     <div className="flex flex-col items-center text-center" ref={addToRefs}>
@@ -64,7 +64,7 @@ export default function VisitedPlaces() {
                         <p className="font-inter text-lg mt-4 font-semibold bg-duwet-primary w-3/4 rounded-md py-2 text-white">Embung Ngrancah</p>
                     </div>
                     <div className="flex flex-col items-center text-center" ref={addToRefs}>
-                        <Image src="/img/Taj_Mahal_in_March_2004.jpg" alt="Masjid Al-Furqon" className="rounded-xl w-48 h-72 md:w-48 md:h-72 lg:w-64 lg:h-96" isZoomed />
+                        <Image src="/img/masjid_al_furqon.jpeg" alt="Masjid Al-Furqon" className="rounded-xl w-48 h-72 md:w-48 md:h-72 lg:w-64 lg:h-96" isZoomed />
                         <p className="font-inter text-lg mt-4 font-semibold bg-duwet-primary w-3/4 rounded-md py-2 text-white">Masjid Al-Furqon</p>
                     </div>
                 </div>
