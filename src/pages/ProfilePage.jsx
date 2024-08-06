@@ -9,7 +9,7 @@ export default function ProfilePage() {
                     {/* About Section */}
                     <section id="about" className="py-8">
                         <div className="container mx-auto px-4">
-                            <h2 className="text-3xl font-bold text-start mb-8 font-intee">Tentang <span className="text-duwet-primary">Padukuhan</span></h2>
+                            <h2 className="text-3xl font-bold text-start mb-8 font-inter">Tentang <span className="text-duwet-primary">Padukuhan</span></h2>
                             <p className="text-gray-700 text-lg leading-relaxed text-justify">
                                 Padukuhan Duwet merupakan salah satu padukuhan yang terletak di Kalurahan Jerukwudel, Kapanewon Jerukwudel, Kabupaten Gunungkidul, Daerah Istimewa Yogyakarta.
                                 Padukuhan Duwet ini sendiri terdiri dari atas 3 RT dan 1 RW. Padukuhan Duwet, yang terletak di Kalurahan Jerukwudel, Gunungkidul, adalah sebuah kawasan yang dikenal
@@ -24,7 +24,7 @@ export default function ProfilePage() {
                     {/* History Section */}
                     <section id="history" className="py-8">
                         <div className="container mx-auto px-4">
-                            <h2 className="text-3xl font-bold text-start mb-8 font-intee">Sejarah <span className="text-duwet-primary">Padukuhan</span></h2>
+                            <h2 className="text-3xl font-bold text-start mb-8 font-inter">Sejarah <span className="text-duwet-primary">Padukuhan</span></h2>
 
                             <p className="text-duwet-dark-text text-lg loading-relaxed text-justify">Sejarah Padukuhan Duwet di Kalurahan Jerukwudel, Gunungkidul, mencerminkan perjalanan panjang sebuah komunitas pedesaan yang penuh dengan nilai-nilai budaya dan tradisi. Awalnya, padukuhan ini didirikan oleh sekelompok kecil petani yang membuka lahan pertanian di daerah berbukit kapur yang menantang. Seiring berjalannya waktu, jumlah penduduk semakin bertambah, dan masyarakat mulai membangun infrastruktur dasar seperti jalan setapak, sumur, dan tempat ibadah.</p>
                             <br />
