@@ -9,6 +9,7 @@ import { toast } from "sonner";
 export default function AdminContents() {
     const [contents, setContents] = useState([]);
     const [loading, setLoading] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState(null);
     const [selectedContent, setSelectedContent] = useState(null);
 

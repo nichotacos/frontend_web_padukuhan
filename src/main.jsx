@@ -5,7 +5,6 @@ import './index.css'
 
 import { NextUIProvider } from "@nextui-org/react";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import AdminHomePage from './pages/admin/AdminHomePage.jsx';
 import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
 import AdminContents from './pages/admin/AdminContents.jsx';
 import AdminLayouts from './layouts/AdminLayouts.jsx';

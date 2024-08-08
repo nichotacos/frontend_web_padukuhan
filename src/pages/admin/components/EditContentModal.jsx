@@ -15,7 +15,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
             setDescription(content.content || "");
             // setImage(content.image || null);
         }
-    }, [content]);
+    }, []);
 
     function handleContentImage(event) {
         setImage(event.target.files[0]);
@@ -40,8 +40,10 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
             image: image
         }
 
-        // eslint-disable-next-line no-unused-vars
+        console.log(newData);
+
         const response = await EditKonten(newData);
+        console.log(response);
 
         setTitle("");
         setDescription("");
