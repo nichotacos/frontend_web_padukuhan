@@ -64,18 +64,28 @@ export const CreateKonten = async (data) => {
 
 export const EditKonten = async (data) => {
     try {
-        console.log('data di api:', data);
-        const response = await useAxios.put(`/konten/${data.id}`, data, {
+        const formData = new FormData();
+        formData.append('title', data.title);
+        formData.append('content', data.content);
+
+        if (data.image) {
+            formData.append('image', data.image);
+        }
+        console.log('data di api:', formData.get('title'), formData.get('content'), formData.get('image'));
+        const response = await useAxios.put(`/konten/${data.id}`, formData, {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
+                "Accept": "multipart/form-data",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
         });
+
         return response.data;
     } catch (error) {
-        console.error(error);
+        console.error('Axios error:', error);
     }
 }
+
 
 export const DeleteKonten = async (id) => {
     try {

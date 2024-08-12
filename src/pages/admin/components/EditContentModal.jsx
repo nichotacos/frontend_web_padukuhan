@@ -15,7 +15,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
             setDescription(content.content || "");
             // setImage(content.image || null);
         }
-    }, []);
+    }, [content]);
 
     function handleContentImage(event) {
         setImage(event.target.files[0]);
@@ -24,7 +24,9 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        if (title === "" || description === "" || !image) {
+        console.log(title, description, image);
+
+        if (title === "" || description === "") {
             toast.error("Semua kolom harus diisi");
             return;
         }
@@ -32,13 +34,16 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
         const formData = new FormData();
         formData.append("title", title);
         formData.append("description", description);
-        formData.append("image", image);
+        if (image) {
+            formData.append("image", image);
+        }
 
         const newData = {
-            title: title,
-            description: description,
-            image: image
-        }
+            id: content.id,
+            title: formData.get("title"),
+            content: formData.get("description"),
+            ...(image && { image: formData.get("image") }),
+        };
 
         console.log(newData);
 
@@ -51,7 +56,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
 
         onOpenChange(false);
 
-        toast.success("Konten berhasil ditambahkan");
+        toast.success("Konten berhasil diperbarui");
     }
 
     return (
