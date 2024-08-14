@@ -1,4 +1,5 @@
 import useAxios from "./index.jsx";
+// import qs from "qs";
 
 export const FetchKonten = async () => {
     try {
@@ -64,21 +65,27 @@ export const CreateKonten = async (data) => {
 
 export const EditKonten = async (data) => {
     try {
+        const id = data.get('id');
+        console.log('data di api:', data.get('title'), data.get('content'), data.get('image'));
         const formData = new FormData();
-        formData.append('title', data.title);
-        formData.append('content', data.content);
-
-        if (data.image) {
-            formData.append('image', data.image);
+        formData.append("title", data.get('title'));
+        formData.append("content", data.get('content'));
+        if (data.get('image')) {
+            formData.append("image", data.get('image'));
         }
-        console.log('data di api:', formData.get('title'), formData.get('content'), formData.get('image'));
-        const response = await useAxios.put(`/konten/${data.id}`, formData, {
+        console.log('data di api formdata:', formData.get('title'), formData.get('content'), formData.get('image'));
+        const response = await useAxios.post(`/konten/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                "Accept": "multipart/form-data",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
         });
+        // const response = await useAxios.put(`/konten/${data.id}`, qs.stringify(data), {
+        //     headers: {
+        //         "Content-Type": "application/x-www-form-urlencoded",
+        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //     }
+        // });
 
         return response.data;
     } catch (error) {

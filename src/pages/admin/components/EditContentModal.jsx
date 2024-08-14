@@ -8,6 +8,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (content) {
@@ -32,31 +33,40 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
         }
 
         const formData = new FormData();
+        formData.append("id", content.id);
         formData.append("title", title);
-        formData.append("description", description);
+        formData.append("content", description);
         if (image) {
             formData.append("image", image);
         }
 
-        const newData = {
-            id: content.id,
-            title: formData.get("title"),
-            content: formData.get("description"),
-            ...(image && { image: formData.get("image") }),
-        };
+        console.log('data di modal:', formData.get('title'), formData.get('content'), formData.get('image'));
 
-        console.log(newData);
+        // const newData = {
+        //     id: content.id,
+        //     title: formData.get("title"),
+        //     content: formData.get("content"),
+        //     ...(image && { image: formData.get("image") }),
+        // };
 
-        const response = await EditKonten(newData);
-        console.log(response);
+        // console.log(newData);
 
-        setTitle("");
-        setDescription("");
-        setImage(null);
+        try {
+            setLoading(true);
+            const response = await EditKonten(formData);
+            console.log(response);
+            toast.success("Konten berhasil diperbarui");
+        } catch (error) {
+            console.error('Error editing content:', error);
+            toast.error("Gagal memperbarui konten");
+        } finally {
+            setLoading(false);
+            setTitle("");
+            setDescription("");
+            setImage(null);
 
-        onOpenChange(false);
-
-        toast.success("Konten berhasil diperbarui");
+            onOpenChange(false);
+        }
     }
 
     return (
@@ -123,8 +133,8 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
                             <Button color="danger" variant="light" onPress={onClose}>
                                 Batal
                             </Button>
-                            <Button color="primary" type="submit">
-                                Simpan
+                            <Button color="primary" type="submit" isDisabled={loading}>
+                                {loading ? "Loading..." : "Simpan"}
                             </Button>
                         </ModalFooter>
                     </form>

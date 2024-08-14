@@ -37,8 +37,10 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
             setLoading(true);
             const response = await CreateKonten(formData);
             console.log(response);
+            toast.success("Konten berhasil ditambahkan");
         } catch (error) {
             console.error('Error creating content:', error);
+            toast.error("Gagal menambahkan konten");
         } finally {
             setLoading(false);
         }
@@ -48,8 +50,6 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
         setImage(null);
 
         onOpenChange(true);
-
-        toast.success("Konten berhasil ditambahkan");
     }
 
     return (
@@ -104,7 +104,7 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
                             <Button color="danger" variant="light" onPress={onClose}>
                                 Batal
                             </Button>
-                            <Button color="primary" type="submit">
+                            <Button color="primary" type="submit" isDisabled={loading}>
                                 {loading ? "Loading..." : "Tambah"}
                             </Button>
                         </ModalFooter>
