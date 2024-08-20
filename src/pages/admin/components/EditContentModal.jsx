@@ -25,8 +25,6 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        console.log(title, description, image);
-
         if (title === "" || description === "") {
             toast.error("Semua kolom harus diisi");
             return;
@@ -39,17 +37,6 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
         if (image) {
             formData.append("image", image);
         }
-
-        console.log('data di modal:', formData.get('title'), formData.get('content'), formData.get('image'));
-
-        // const newData = {
-        //     id: content.id,
-        //     title: formData.get("title"),
-        //     content: formData.get("content"),
-        //     ...(image && { image: formData.get("image") }),
-        // };
-
-        // console.log(newData);
 
         try {
             setLoading(true);

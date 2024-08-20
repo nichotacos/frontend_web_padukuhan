@@ -66,14 +66,12 @@ export const CreateKonten = async (data) => {
 export const EditKonten = async (data) => {
     try {
         const id = data.get('id');
-        console.log('data di api:', data.get('title'), data.get('content'), data.get('image'));
         const formData = new FormData();
         formData.append("title", data.get('title'));
         formData.append("content", data.get('content'));
         if (data.get('image')) {
             formData.append("image", data.get('image'));
         }
-        console.log('data di api formdata:', formData.get('title'), formData.get('content'), formData.get('image'));
         const response = await useAxios.post(`/konten/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",

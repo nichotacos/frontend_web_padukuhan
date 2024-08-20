@@ -33,7 +33,6 @@ export default function AdminContents() {
     function handleEditContent(content) {
         setSelectedContent(content);
         onEditOpen();
-        console.log('Edit content:', content);
     }
 
     async function handleDeleteContent(id) {

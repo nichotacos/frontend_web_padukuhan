@@ -35,8 +35,6 @@ export default function ContentDetail() {
         return <div>Content not found.</div>;
     }
 
-    console.log(content);
-
     return (
         <>
             <div className="bg-lime-100 flex flex-col items-center pt-8 pb-20">
