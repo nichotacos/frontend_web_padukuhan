@@ -37,7 +37,7 @@ export default function AddContentModal({ isOpen, onOpenChange }) {
             setLoading(true);
             const response = await CreateKonten(formData);
             console.log(response);
-            toast.success("Konten berhasil ditambahkan");
+            toast.success("Konten berhasil ditambahkan. Silakan refresh halaman");
         } catch (error) {
             console.error('Error creating content:', error);
             toast.error("Gagal menambahkan konten");

@@ -40,6 +40,20 @@ export default function AdminContents() {
             setLoading(true);
             const response = await DeleteKonten(id);
             console.log(response);
+            const fetchContents = async () => {
+                try {
+                    setLoading(true);
+                    const response = await FetchKonten();
+                    console.log(response.data);
+                    setContents(response.data);
+                } catch (error) {
+                    setError(error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            fetchContents();
             toast.success("Konten berhasil dihapus");
         } catch (error) {
             console.error('Error deleting content:', error);
@@ -67,7 +81,9 @@ export default function AdminContents() {
                                 <Button className="mt-4 lg:mt-8 mb-4 font-bold text-sm lg:text-lg" color="warning" onPress={onOpen}>
                                     Tambah Konten
                                 </Button>
-                                <Table aria-label="Example static collection table" isStriped>
+                                {error ? <div className="flex justify-center items-center">
+                                    <p className="text-pretty text-lg">Tidak ada konten</p>
+                                </div> : <Table aria-label="Example static collection table" isStriped>
                                     <TableHeader>
                                         <TableColumn className="w-1/12"><p className="text-xs lg:text-sm">No.</p></TableColumn>
                                         <TableColumn className="w-2/12"><p className="text-xs lg:text-sm">Judul</p></TableColumn>
@@ -91,7 +107,7 @@ export default function AdminContents() {
                                             </TableRow>
                                         ))}
                                     </TableBody>
-                                </Table>
+                                </Table>}
                             </div>
                         </div>
                     </div>

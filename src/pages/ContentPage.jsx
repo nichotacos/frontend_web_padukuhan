@@ -70,6 +70,8 @@ export default function ContentPage() {
                         <div className="flex justify-center items-center my-2 lg:my-8">
                             <Spinner size="lg" color="warning">Loading...</Spinner>
                         </div>
+                    ) : (contents.length == 0 ? (
+                        <div className="text-duwet-dark-text font-inter text-2xl my-8 font-bold">Tidak ada berita terbaru</div>
                     ) : (
                         <div className="flex flex-col lg:flex-row gap-8">
                             {contents.map((content, index) => (
@@ -88,8 +90,8 @@ export default function ContentPage() {
                                 </Card>
                             ))}
                         </div>
-                    )}
-                    <Button auto className="font-semibold bg-amber-500 text-white mt-8 w-6/12 lg:w-2/12 mb-8 lg:mb-0" onClick={handleViewAll}>Lihat lebih banyak</Button>
+                    ))}
+                    <Button auto className="font-semibold bg-amber-500 text-white mt-2 lg:mt-8 w-6/12 lg:w-2/12 mb-8 lg:mb-0" onClick={handleViewAll}>Lihat lebih banyak</Button>
                 </div>
             </div>
         </>

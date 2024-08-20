@@ -42,7 +42,7 @@ export default function EditContentModal({ content, isOpen, onOpenChange }) {
             setLoading(true);
             const response = await EditKonten(formData);
             console.log(response);
-            toast.success("Konten berhasil diperbarui");
+            toast.success("Konten berhasil diperbarui. Silakan refresh halaman");
         } catch (error) {
             console.error('Error editing content:', error);
             toast.error("Gagal memperbarui konten");
